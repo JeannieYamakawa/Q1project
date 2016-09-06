@@ -4,8 +4,8 @@
 }
 #header {
     height: 20vh;
-    background-color: lightblue;
-    color: #2394BA;
+    background-color: rgb(255, 205, 115);
+    color: rgb(45, 113, 126);
     font-size: 80%;
 }
 .header-h1 {
@@ -48,7 +48,7 @@
     font-size: 3vw;
     margin-top: 2.8vh;
     width: 0 auto;
-    background-color: gray;
+    background-color: rgb(201, 62, 57);
     border: 3px solid WhiteSmoke;
     border-radius: 50%;
     padding: 10%;
@@ -67,7 +67,7 @@
     text-indent: -8px;
     -o-text-overflow: clip;
     text-overflow: clip;
-    text-shadow: 3px 3px 0 MidnightBlue, 4px 4px 0 MidnightBlue;
+    text-shadow: 3px 3px 0 black, 4px 4px 0 black;
 }
 
 /*.hover1:hover {
