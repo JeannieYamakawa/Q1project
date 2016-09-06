@@ -1,0 +1,107 @@
+.row {
+    margin-left: -1vw;
+    margin-right: -1vw;
+}
+#header {
+    height: 20vh;
+    background-color: lightblue;
+    color: #2394BA;
+    font-size: 80%;
+}
+.header-h1 {
+    margin: 30px;
+    font-size: 80%;
+}
+#type1 {
+    height: 40vh;
+    background-color: DarkCyan;
+}
+#type2 {
+    height: 40vh;
+    background-color: DarkBlue;
+}
+#type3 {
+    height: 40vh;
+    background-color: DarkMagenta;
+}
+#type4 {
+    height: 40vh;
+    background-color: DarkGreen;
+}
+#type5 {
+    height: 40vh;
+    background-color: DarkSlateBlue;
+}
+#type6 {
+    height: 40vh;
+    background-color: LightCoral;
+}
+#type7 {
+    height: 40vh;
+    background-color: OliveDrab;
+}
+#type8 {
+    height: 40vh;
+    background-color: RebeccaPurple;
+}
+#type1-label {
+    font-size: 3vw;
+    width: 0 auto;
+    background-color: gray;
+    border: 3px solid WhiteSmoke;
+    border-radius: 50%;
+    padding: 10%;
+}
+.text-center {
+    text-align: center
+}
+.long-shadow {
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+    color: WhiteSmoke;
+    text-indent: -8px;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 3px 3px 0 MidnightBlue, 4px 4px 0 MidnightBlue;
+}
+.hover1:hover {
+    -ms-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+#type1-label:hover {
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+#pictureTest {
+    height: 15%;
+    display: inline;
+    margin: 11px auto;
+}
+#headerPicture {
+    height: 15vh;
+    display: inline;
+    float: left;
+    max-width: 100%;
+    margin-left: 2vw;
+    margin-bottom: 4vh;
+}
+.headerText {
+    display: inline;
+    font-size: 6vw;
+    max-width: 100%;
+    position: relative;
+    top: 7px;
+}
+#header {
+    max-width: 100%;
+    padding-top: 2%;
+}
+.invert {
+    filter: invert(100%)
+}
