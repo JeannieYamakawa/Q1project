@@ -46,6 +46,7 @@
 }
 #type1-label {
     font-size: 3vw;
+    margin-top: 2.8vh;
     width: 0 auto;
     background-color: gray;
     border: 3px solid WhiteSmoke;
@@ -68,20 +69,24 @@
     text-overflow: clip;
     text-shadow: 3px 3px 0 MidnightBlue, 4px 4px 0 MidnightBlue;
 }
-.hover1:hover {
-    -ms-transform: scale(1.3);
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
-}
+
+/*.hover1:hover {
+    -ms-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+}*/
+
 #type1-label:hover {
     -ms-transform: scale(1.05);
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
 }
 #pictureTest {
-    height: 15%;
-    display: inline;
-    margin: 11px auto;
+    height: 7.3vh;
+    padding-left: .5vw;
+    padding-right: .5vw;
+    display: inline-block;
+    margin-top: 3vh;
 }
 #headerPicture {
     height: 15vh;
@@ -89,6 +94,7 @@
     float: left;
     max-width: 100%;
     margin-left: 2vw;
+    margin-top: 2vh;
     margin-bottom: 4vh;
 }
 .headerText {
@@ -96,7 +102,7 @@
     font-size: 6vw;
     max-width: 100%;
     position: relative;
-    top: 7px;
+    top: 4vh;
 }
 #header {
     max-width: 100%;
@@ -104,4 +110,9 @@
 }
 .invert {
     filter: invert(100%)
+}
+.allTogether:hover {
+    -ms-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
 }
