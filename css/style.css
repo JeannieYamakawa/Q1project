@@ -88,6 +88,13 @@
     display: inline-block;
     margin-top: 3vh;
 }
+#pictureTest2 {
+    height: 12vh;
+    padding-left: .5vw;
+    padding-right: .5vw;
+    display: inline-block;
+    margin-top: 3vh;
+}
 #headerPicture {
     height: 15vh;
     display: inline;
