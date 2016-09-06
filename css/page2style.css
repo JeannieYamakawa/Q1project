@@ -20,7 +20,7 @@
     text-indent: -8px;
     -o-text-overflow: clip;
     text-overflow: clip;
-    text-shadow: 3px 3px 0 MidnightBlue, 4px 4px 0 MidnightBlue, 5px 5px 0 MidnightBlue, 6px 6px 0 MidnightBlue, 7px 7px 0 MidnightBlue;
+    text-shadow: 3px 3px 0 black, 4px 4px 0 black, 5px 5px 0 black, 6px 6px 0 black, 7px 7px 0 black, 8px 8px 0 black;
 }
 .headerText {
     font-size: 7.4vw;
@@ -57,4 +57,46 @@
     max-width: 35%;
     max-height: 40%;
     z-index: 2;
+    -webkit-filter: drop-shadow(15px 15px 15px #222);
+    filter: drop-shadow(15px 15px 15px #222);
+}
+.optionsRadios {
+    display: block;
+    position: fixed;
+    left: 10vw;
+    height: 6vh;
+    width: 10vw;
+    top: 64vh;
+}
+.optionsRadios1 {
+    display: block;
+    position: fixed;
+    left: 9vw;
+    height: 6vh;
+    width: 10vw;
+    top: 66vh;
+}
+.optionsRadios2 {
+    display: block;
+    position: fixed;
+    left: 9vw;
+    height: 6vh;
+    width: 10vw;
+    top: 72vh;
+}
+.optionsRadios3 {
+    display: block;
+    position: fixed;
+    left: 9vw;
+    height: 6vh;
+    width: 10vw;
+    top: 78vh;
+}
+.optionsRadios4 {
+    display: block;
+    position: fixed;
+    left: 9vw;
+    height: 6vh;
+    width: 10vw;
+    top: 84vh;
 }
