@@ -1,0 +1,60 @@
+#background-image {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+#header-div {
+    position: relative;
+}
+.long-shadow {
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+    color: WhiteSmoke;
+    text-indent: -8px;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 3px 3px 0 MidnightBlue, 4px 4px 0 MidnightBlue, 5px 5px 0 MidnightBlue, 6px 6px 0 MidnightBlue, 7px 7px 0 MidnightBlue;
+}
+.headerText {
+    font-size: 7.4vw;
+    padding-left: 2vw;
+    position: absolute;
+    top: 2vh;
+    right: 7vh;
+    z-index: 5;
+}
+.driving {
+    font-size: 3vw;
+    position: fixed;
+    top: 50vh;
+    left: 2.5vw;
+    z-index: 2;
+}
+.pin {
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 39vh;
+    top: 4vh;
+    max-width: 25%;
+    max-height: 40%;
+    left: 2.5vw;
+    z-index: 2;
+}
+.truck {
+    position: fixed;
+    margin: 0 auto;
+    height: 30vh;
+    top: 49vh;
+    left: 58vw;
+    max-width: 35%;
+    max-height: 40%;
+    z-index: 2;
+}

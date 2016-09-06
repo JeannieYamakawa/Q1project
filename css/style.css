@@ -99,10 +99,10 @@
 }
 .headerText {
     display: inline;
-    font-size: 6vw;
+    font-size: 6.1vw;
     max-width: 100%;
     position: relative;
-    top: 4vh;
+    top: 2vh;
 }
 #header {
     max-width: 100%;
