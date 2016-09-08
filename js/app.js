@@ -30,7 +30,7 @@ $( function() {
                 $cuisineType = event.target.title
                 $cuisineType = $cuisineType.toUpperCase();
                 console.log( $cuisineType ) //
-                window.location.href = 'file:///Users/admin/galvanize/Q1project/page2.html?type=' + $cuisineType;
+                window.location.href = '/page2.html?type=' + $cuisineType;
                 return false;
             }
         } );
@@ -93,7 +93,7 @@ $( function() {
                                 console.log( bizAddress );
                                 if ( bizAddress == undefined ) {
                                     alert( "No truck be found in your area for your chosen cuisine type. Please choose another type." )
-                                    window.location.href = 'file:///Users/admin/galvanize/Q1project/index.html'
+                                    window.location.href = '/index.html'
                                     return false
 
                                 } else {
@@ -113,7 +113,7 @@ $( function() {
                                     arrayOfBizInfo[ i ].trucksName = truckName;
                                     arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
                                     arrayOfBizInfo[ i ].imgLocation = photoLocation;
-                                    window.location.href = 'file:///Users/admin/galvanize/Q1project/page3.html'
+                                    window.location.href = '/page3.html'
                                 }
                             } );
 
