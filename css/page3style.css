@@ -1,10 +1,11 @@
-#background-image {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
+#background-image2 {
+    position: relative;
+    height: 99.5vh;
+    width: 99.5vw;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 #header-div {
     position: relative;
@@ -23,24 +24,176 @@
     text-shadow: 3px 3px 0 MidnightBlue, 4px 4px 0 MidnightBlue, 5px 5px 0 MidnightBlue, 6px 6px 0 MidnightBlue, 7px 7px 0 MidnightBlue;
 }
 .headerText {
-    font-size: 6vw;
-    position: absolute;
+    font-size: 4vw;
+    max-height: 6vh;
+    position: fixed;
     top: 2vh;
     right: 5vh;
     z-index: 5;
 }
-.driving {
-    font-size: 3vw;
+.table-row1 {
     position: fixed;
-    top: 50vh;
-    left: 2.5vw;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 6vh;
+    /*max-width: 25%;*/
+    max-height: 44%;
+    left: 6vw;
     z-index: 2;
 }
-.pin {
+.table-row2 {
     position: fixed;
+    padding-right: 2vw;
     margin: 0 auto;
-    height: 39vh;
-    top: 4vh;
-    left: 2.5vw;
+    height: 100vh;
+    top: 26vh;
+    /*max-width: 25%;*/
+    max-height: 44%;
+    left: 6vw;
+    z-index: 2;
+}
+.table-row3 {
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 46vh;
+    /*max-width: 25%;*/
+    max-height: 44%;
+    left: 6vw;
+    z-index: 2;
+}
+.table-row4 {
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 66.5vh;
+    /*max-width: 25%;*/
+    max-height: 44%;
+    left: 6vw;
+    z-index: 2;
+}
+.table-row5 {
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 86.5vh;
+    /*max-width: 25%;*/
+    max-height: 44%;
+    left: 6vw;
+    z-index: 2;
+}
+.setToInline1 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    /*height: 100vh;*/
+    top: 6vh;
+    max-height: 44%;
+    left: 68vw;
+    z-index: 2;
+}
+.setToInline2 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    /*height: 100vh;*/
+    top: 26vh;
+    max-height: 44%;
+    left: 68vw;
+    z-index: 2;
+}
+.setToInline3 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    /*height: 100vh;*/
+    top: 46vh;
+    max-height: 44%;
+    left: 68vw;
+    z-index: 2;
+}
+.setToInline4 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    /*height: 100vh;*/
+    top: 66.5vh;
+    max-height: 44%;
+    left: 68vw;
+    z-index: 2;
+}
+.setToInline5 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    /*height: 100vh;*/
+    top: 86.5vh;
+    max-height: 44%;
+    left: 68vw;
+    z-index: 2;
+}
+.photo1 {
+    display: inline-block;
+    position: fixed;
+    /*padding-right: 2vw;*/
+    margin: 0 auto;
+    height: 90px;
+    width: 90px;
+    top: 5vh;
+    /*max-height: 44%;*/
+    left: 50vw;
+    z-index: 2;
+}
+.photo2 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 25vh;
+    max-height: 44%;
+    left: 64vw;
+    z-index: 2;
+}
+.photo3 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 45vh;
+    max-height: 44%;
+    left: 64vw;
+    z-index: 2;
+}
+.photo4 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 65.5vh;
+    max-height: 44%;
+    left: 64vw;
+    z-index: 2;
+}
+.photo5 {
+    display: inline-block;
+    position: fixed;
+    padding-right: 2vw;
+    margin: 0 auto;
+    height: 100vh;
+    top: 85.5vh;
+    max-height: 44%;
+    left: 64vw;
     z-index: 2;
 }
