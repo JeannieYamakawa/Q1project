@@ -19,19 +19,20 @@
 //         ne_latitude = ( lat - ( -0.09089659 ) );
 //         ne_longitude = ( long - ( -0.09918571 ) );
 //         console.log( lat, long )
-
-
-
-
-
+//
+//
+//
+//
+//
 //         console.log( lat, ",", long, ",", sw_latitude, ',', sw_longitude, ',', ne_latitude, ',', ne_longitude )
-
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
+//     }
+// } )
 
 // domParsed.each( function( i ) {
 //     var bizYelpPageHref = $( this ).find( '.indexed-biz-name a' )[ 0 ].pathname //returns 10 business addresses from the same yelp page
@@ -44,9 +45,3 @@
 //
 //     console.log( mapString )
 // } )
-
-
-<
-script type = "text/javascript"
-src = "http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCaWJSsvedWZCp-sQLtlIxvAK4B7KWJQpccontent_copy" > < /script>
-script >

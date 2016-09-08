@@ -156,44 +156,48 @@
 .photo2 {
     display: inline-block;
     position: fixed;
-    padding-right: 2vw;
+    /*padding-right: 2vw;*/
     margin: 0 auto;
-    height: 100vh;
+    height: 90px;
+    width: 90px;
     top: 25vh;
-    max-height: 44%;
-    left: 64vw;
+    /*max-height: 44%;*/
+    left: 50vw;
     z-index: 2;
 }
 .photo3 {
     display: inline-block;
     position: fixed;
-    padding-right: 2vw;
+    /*padding-right: 2vw;*/
     margin: 0 auto;
-    height: 100vh;
+    height: 90px;
+    width: 90px;
     top: 45vh;
-    max-height: 44%;
-    left: 64vw;
+    /*max-height: 44%;*/
+    left: 50vw;
     z-index: 2;
 }
 .photo4 {
     display: inline-block;
     position: fixed;
-    padding-right: 2vw;
+    /*padding-right: 2vw;*/
     margin: 0 auto;
-    height: 100vh;
+    height: 90px;
+    width: 90px;
     top: 65.5vh;
-    max-height: 44%;
-    left: 64vw;
+    /*max-height: 44%;*/
+    left: 50vw;
     z-index: 2;
 }
 .photo5 {
     display: inline-block;
     position: fixed;
-    padding-right: 2vw;
+    /*padding-right: 2vw;*/
     margin: 0 auto;
-    height: 100vh;
+    height: 90px;
+    width: 90px;
     top: 85.5vh;
-    max-height: 44%;
-    left: 64vw;
+    /*max-height: 44%;*/
+    left: 50vw;
     z-index: 2;
 }
