@@ -194,16 +194,28 @@ $( function() {
 
 
 var radius = {
-    1: function() {
-
+    1: function( lt, lng ) {
+        var sw_latitude, sw_longitude, ne_latitude, ne_longitude;
+        sw_latitude = ( lt - 0.00907207 );
+        sw_longitude = ( lng - 0.0159132433 );
+        ne_latitude = ( lt - ( -0.0131520187 ) );
+        ne_longitude = ( lng - ( -0.0096643019 ) );
     },
 
-    2: function() {
-
+    2: function( lt, lng ) {
+        var sw_latitude, sw_longitude, ne_latitude, ne_longitude;
+        sw_latitude = ( lt - 0.0201860072 );
+        sw_longitude = ( lng - 0.0287020159 );
+        ne_latitude = ( lt - ( -0.02426217 ) );
+        ne_longitude = ( lng - ( -0.02245307 ) );
     },
 
-    5: function() {
-
+    5: function( lt, lng ) {
+        var sw_latitude, sw_longitude, ne_latitude, ne_longitude;
+        sw_latitude = ( lt - 0.0424176607 );
+        sw_longitude = ( lng - 0.05427956 );
+        ne_latitude = ( lt - ( -0.0464786928 ) );
+        ne_longitude = ( lng - ( -0.0480306196 ) );
     },
 
     10: function( lt, lng ) {
@@ -226,3 +238,5 @@ var radius = {
 
 //images on page 3 need to be linked to yelp's main page for the business
 //calculate for 1, 2, and 5 miles the regular zip minus ____
+__
+_
