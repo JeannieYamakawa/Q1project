@@ -124,7 +124,7 @@ $( function() {
                                                     moveRight();
                                                 } //ends else
 
-
+                                                console.log( arrayOfBizInfo )
                                                 window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
 
                                             } ).fail( function() {
