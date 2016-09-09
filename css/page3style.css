@@ -36,11 +36,11 @@
     position: fixed;
     padding-right: 2vw;
     margin: 0 auto;
-    height: 30vh;
+    height: 10vh;
     top: 6vh;
     /*max-width: 25%;*/
     max-height: 44%;
-    max-width: 20%;
+    max-width: 10%;
     left: 6vw;
     z-index: 2;
 }
@@ -48,8 +48,8 @@
     position: fixed;
     padding-right: 2vw;
     margin: 0 auto;
-    height: 100vh;
-    max-width: 20%;
+    height: 10vh;
+    max-width: 10%;
     top: 26vh;
     /*max-width: 25%;*/
     max-height: 44%;
@@ -60,8 +60,8 @@
     position: fixed;
     padding-right: 2vw;
     margin: 0 auto;
-    height: 100vh;
-    max-width: 20%;
+    height: 10vh;
+    max-width: 10%;
     top: 46vh;
     /*max-width: 25%;*/
     max-height: 44%;
@@ -72,8 +72,8 @@
     position: fixed;
     padding-right: 2vw;
     margin: 0 auto;
-    height: 100vh;
-    max-width: 20%;
+    height: 10vh;
+    max-width: 10%;
     top: 66.5vh;
     /*max-width: 25%;*/
     max-height: 44%;
@@ -84,8 +84,8 @@
     position: fixed;
     padding-right: 2vw;
     margin: 0 auto;
-    height: 100vh;
-    max-width: 20%;
+    height: 10vh;
+    max-width: 10%;
     top: 86.5vh;
     /*max-width: 25%;*/
     max-height: 44%;
