@@ -156,7 +156,7 @@
     width: 90px;
     top: 4vh;
     /*max-height: 44%;*/
-    left: 60vw;
+    left: 55vw;
     z-index: 2;
 }
 .photo2 {
@@ -168,7 +168,7 @@
     width: 90px;
     top: 24vh;
     /*max-height: 44%;*/
-    left: 60vw;
+    left: 55vw;
     z-index: 2;
 }
 .photo3 {
@@ -180,7 +180,7 @@
     width: 90px;
     top: 44vh;
     /*max-height: 44%;*/
-    left: 60vw;
+    left: 55vw;
     z-index: 2;
 }
 .photo4 {
@@ -192,7 +192,7 @@
     width: 90px;
     top: 64.5vh;
     /*max-height: 44%;*/
-    left: 60vw;
+    left: 55vw;
     z-index: 2;
 }
 .photo5 {
@@ -204,6 +204,6 @@
     width: 90px;
     top: 84.5vh;
     /*max-height: 44%;*/
-    left: 60vw;
+    left: 55vw;
     z-index: 2;
 }
