@@ -179,7 +179,7 @@ $( function() {
         for ( var m = 0; m < 5; m++ ) {
 
             var $newImg = $( "<img>" );
-            var imageAddress = "http:" + myArrayofInfo[ m ].imgLocation;
+            var imageAddress = "https:" + myArrayofInfo[ m ].imgLocation;
             $newImg.attr( "src", imageAddress );
             $newImg.attr( "style", "cursor: pointer;" );
             var $newDivsClass2 = 'photo' + ( m + 1 );
