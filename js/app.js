@@ -1,82 +1,82 @@
 $( function() {
-        var $body = $( ".pg1body" );
-        var $userInput = $( "#food-table" );
-        var $form = $( "#theForm" );
-        var $cuisineType;
-        var $userZipCode = $( "#inputText" );
-        console.log( $userZipCode )
-        var $userInput;
+    var $body = $( ".pg1body" );
+    var $userInput = $( "#food-table" );
+    var $form = $( "#theForm" );
+    var $cuisineType;
+    var $userZipCode = $( "#inputText" );
+    console.log( $userZipCode )
+    var $userInput;
 
-        var $within1Mile, $within2Miles, $within5Miles, $within10Miles;
-        var $checkedZipCode;
-        var $arrayOfCuisine;
-        var $button = $( '.button' )
-        console.log( $button )
-        var $truck = $( '.truck' )
-        var $pg3body = $( ".pg3body" )
-
-
-        function isValidZip( sZip ) {
-            return /^\d{5}(-\d{4})?$/.test( sZip );
-        }
-        var arrayOfBizInfo = []
-
-        $( $body ).click( function( event ) {
-
-            if ( event.target.title == "header" ) {
-                alert( "Please choose a cuisine!" )
-            } else {
-                event.preventDefault()
-                $cuisineType = event.target.title
-                $cuisineType = $cuisineType.toUpperCase();
-                console.log( $cuisineType ) //
-                window.location.href = '/Q1project/page2.html?type=' + $cuisineType;
-                return false;
-            }
-        } );
+    var $within1Mile, $within2Miles, $within5Miles, $within10Miles;
+    var $checkedZipCode;
+    var $arrayOfCuisine;
+    var $button = $( '.button' )
+    console.log( $button )
+    var $truck = $( '.truck' )
+    var $pg3body = $( ".pg3body" )
 
 
+    function isValidZip( sZip ) {
+        return /^\d{5}(-\d{4})?$/.test( sZip );
+    }
+    var arrayOfBizInfo = []
 
-        $userZipCode.click( function( event ) {
+    $( $body ).click( function( event ) {
+
+        if ( event.target.title == "header" ) {
+            alert( "Please choose a cuisine!" )
+        } else {
             event.preventDefault()
-        } )
+            $cuisineType = event.target.title
+            $cuisineType = $cuisineType.toUpperCase();
+            console.log( $cuisineType ) //
+            window.location.href = '/Q1project/page2.html?type=' + $cuisineType;
+            return false;
+        }
+    } );
 
 
-        $button.click( function( event ) {
-                $cuisineType = window.location.search.split( "=" )[ 1 ];
-                event.preventDefault()
-                var zipCodeToCheck = $userZipCode.val()
 
-                console.log( $cuisineType );
+    $userZipCode.click( function( event ) {
+        event.preventDefault()
+    } )
 
-                var checkedZip = isValidZip( zipCodeToCheck )
-                if ( checkedZip == true ) {
-                    console.log( checkedZip )
+
+    $button.click( function( event ) {
+        $cuisineType = window.location.search.split( "=" )[ 1 ];
+        event.preventDefault()
+        var zipCodeToCheck = $userZipCode.val()
+
+        console.log( $cuisineType );
+
+        var checkedZip = isValidZip( zipCodeToCheck )
+        if ( checkedZip == true ) {
+            console.log( checkedZip )
+            var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
+            console.log( milesChosen )
+
+
+
+            $.ajax( {
+                url: "https://maps.googleapis.com/maps/api/geocode/xml?address=" + zipCodeToCheck + "&sensor=false"
+            } ).done( function( data ) {
+
+                    lat = $( data ).find( "location" ).find( "lat" ).first().text();
+                    long = $( data ).find( "location" ).find( "lng" ).first().text();
+
                     var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
                     console.log( milesChosen )
 
+                    var message = $.ajax( {
+                        //https://www.yelp.com/search?find_desc=food+truck&find_loc=78752&start=0&cflt=mexican&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871
+                        url: 'https://crossorigin.me/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
+                            zipCodeToCheck + '&start=0&cflt=' + $cuisineType + radius[ milesChosen ]( lat, long ),
+                        //+ '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871'
+                        type: 'GET',
+                        dataType: "html"
+                    } );
 
-
-                    $.ajax( {
-                        url: "https://maps.googleapis.com/maps/api/geocode/xml?address=" + zipCodeToCheck + "&sensor=false"
-                    } ).done( function( data ) {
-
-                        lat = $( data ).find( "location" ).find( "lat" ).first().text();
-                        long = $( data ).find( "location" ).find( "lng" ).first().text();
-
-                        var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
-                        console.log( milesChosen )
-
-                        var message = $.ajax( {
-                            //https://www.yelp.com/search?find_desc=food+truck&find_loc=78752&start=0&cflt=mexican&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871
-                            url: 'https://crossorigin.me/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
-                                zipCodeToCheck + '&start=0&cflt=' + $cuisineType + radius[ milesChosen ]( lat, long ),
-                            //+ '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871'
-                            type: 'GET',
-                            dataType: "html"
-                        } );
-
-                        message.done( function( data ) {
+                    message.done( function( data ) {
                             var parsed = $.parseHTML( data )
                             var domParsed = $( parsed ).find( "li.regular-search-result" ) //returns an array of dom nodes
                             domParsed.each( function( i ) {
@@ -117,80 +117,98 @@ $( function() {
                                 }
                             } );
 
-                            window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
+                            //window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
 
 
 
 
 
 
+                        } //closes else
+                    } );
+                var $picture = $( "#truck" );
 
-                        } ).fail( function() {
-                            console.log( "Search didn't work." );
-                        } )
-
-
-                    } )
-
-                } else {
-                    alert( "Please enter a valid zip code!" );
+                function moveRight() {
+                    $picture.animate( {
+                        left: "+=80%"
+                    }, 2100, "linear", changePage2 )
                 }
+                moveRight(); window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
 
 
-            } ) //ends search button click function
-        JSON.parse( localStorage.fakeJSON )
-        var myArrayofInfo = []
-        for ( var i = 0; i < ( JSON.parse( localStorage.fakeJSON ).length ); i++ ) {
-            myArrayofInfo.push( ( JSON.parse( localStorage.fakeJSON ) )[ i ] );
-        }
-
-        var $pg3background = $( '#background-image2' );
-        console.log( myArrayofInfo );
-        for ( var j = 0; j < 5; j++ ) {
-            var $newA = $( "<a>" );
-            $newA.attr( "href", myArrayofInfo[ j ].yelpSite );
-            $newA.attr( "target", "_blank" );
-            var $newDiv = $( '<div >' );
-            $newA.append( $newDiv );
-            $newDiv.attr( "style", "cursor: pointer;" );
-            $newDiv.text( myArrayofInfo[ j ].name );
-            var $newDivsClass = 'table-row' + ( j + 1 );
-            var $newDivsPrevious = 'table-row' + ( j + 2 );
-            $newDiv.attr( 'class', $newDivsClass );
-
-            $pg3background.after( $newA );
-        }
-
-        console.log( myArrayofInfo )
-        for ( var k = 0; k < 5; k++ ) {
-            var $newA = $( "<a>" );
-            $newA.attr( "href", myArrayofInfo[ k ].mapAddress );
-            console.log( myArrayofInfo[ k ].mapAddress );
-            $newA.attr( "style", "cursor: pointer;" );
-            $newA.attr( "target", "_blank" );
-            var $newDivsClass2 = 'setToInline' + ( k + 1 );
-            $newA.attr( 'class', $newDivsClass2 );
-            $newA.text( "map & directions" );
-
-            $pg3background.after( $newA );
-        }
-
-        console.log( myArrayofInfo )
-        for ( var m = 0; m < 5; m++ ) {
-
-            var $newImg = $( "<img>" );
-            var imageAddress = "https:" + myArrayofInfo[ m ].imgLocation;
-            $newImg.attr( "src", imageAddress );
-            $newImg.attr( "style", "cursor: pointer;" );
-            var $newDivsClass2 = 'photo' + ( m + 1 );
-            $newImg.attr( 'class', $newDivsClass2 );
-            var clickImage = "window.open(" + "'" + myArrayofInfo[ m ].yelpSite + "','_blank');"
-            $newImg.attr( 'onclick', clickImage );
-            $pg3background.after( $newImg );
-        }
 
 
-    } ) //ends auto-invoked function
+
+
+
+
+
+            } ).fail( function() {
+            console.log( "Search didn't work." );
+        } )
+
+
+    } )
+
+} else {
+    alert( "Please enter a valid zip code!" );
+}
+
+
+} ) //ends search button click function
+JSON.parse( localStorage.fakeJSON )
+var myArrayofInfo = []
+for ( var i = 0; i < ( JSON.parse( localStorage.fakeJSON ).length ); i++ ) {
+    myArrayofInfo.push( ( JSON.parse( localStorage.fakeJSON ) )[ i ] );
+}
+
+var $pg3background = $( '#background-image2' );
+console.log( myArrayofInfo );
+for ( var j = 0; j < 5; j++ ) {
+    var $newA = $( "<a>" );
+    $newA.attr( "href", myArrayofInfo[ j ].yelpSite );
+    $newA.attr( "target", "_blank" );
+    var $newDiv = $( '<div >' );
+    $newA.append( $newDiv );
+    $newDiv.attr( "style", "cursor: pointer;" );
+    $newDiv.text( myArrayofInfo[ j ].name );
+    var $newDivsClass = 'table-row' + ( j + 1 );
+    var $newDivsPrevious = 'table-row' + ( j + 2 );
+    $newDiv.attr( 'class', $newDivsClass );
+
+    $pg3background.after( $newA );
+}
+
+console.log( myArrayofInfo )
+for ( var k = 0; k < 5; k++ ) {
+    var $newA = $( "<a>" );
+    $newA.attr( "href", myArrayofInfo[ k ].mapAddress );
+    console.log( myArrayofInfo[ k ].mapAddress );
+    $newA.attr( "style", "cursor: pointer;" );
+    $newA.attr( "target", "_blank" );
+    var $newDivsClass2 = 'setToInline' + ( k + 1 );
+    $newA.attr( 'class', $newDivsClass2 );
+    $newA.text( "map & directions" );
+
+    $pg3background.after( $newA );
+}
+
+console.log( myArrayofInfo )
+for ( var m = 0; m < 5; m++ ) {
+
+    var $newImg = $( "<img>" );
+    var imageAddress = "https:" + myArrayofInfo[ m ].imgLocation;
+    $newImg.attr( "src", imageAddress );
+    $newImg.attr( "style", "cursor: pointer;" );
+    var $newDivsClass2 = 'photo' + ( m + 1 );
+    $newImg.attr( 'class', $newDivsClass2 );
+    var clickImage = "window.open(" + "'" + myArrayofInfo[ m ].yelpSite + "','_blank');"
+    $newImg.attr( 'onclick', clickImage );
+    $pg3background.after( $newImg );
+}
+
+
+} ) //ends auto-invoked function
 
 
 var radius = {
