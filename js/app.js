@@ -58,7 +58,7 @@ $( function() {
 
 
                     $.ajax( {
-                        url: "http://maps.googleapis.com/maps/api/geocode/xml?address=" + zipCodeToCheck + "&sensor=false"
+                        url: "https://maps.googleapis.com/maps/api/geocode/xml?address=" + zipCodeToCheck + "&sensor=false"
                     } ).done( function( data ) {
 
                         lat = $( data ).find( "location" ).find( "lat" ).first().text();
@@ -238,5 +238,5 @@ var radius = {
 
 //images on page 3 need to be linked to yelp's main page for the business
 //calculate for 1, 2, and 5 miles the regular zip minus ____
-__
-_
+// __
+// _
