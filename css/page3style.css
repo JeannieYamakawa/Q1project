@@ -39,6 +39,7 @@
     top: 6vh;
     /*max-width: 25%;*/
     max-height: 44%;
+    max-width: 20%;
     left: 6vw;
     z-index: 2;
 }
@@ -47,6 +48,7 @@
     padding-right: 2vw;
     margin: 0 auto;
     height: 100vh;
+    max-width: 20%;
     top: 26vh;
     /*max-width: 25%;*/
     max-height: 44%;
@@ -58,6 +60,7 @@
     padding-right: 2vw;
     margin: 0 auto;
     height: 100vh;
+    max-width: 20%;
     top: 46vh;
     /*max-width: 25%;*/
     max-height: 44%;
@@ -69,6 +72,7 @@
     padding-right: 2vw;
     margin: 0 auto;
     height: 100vh;
+    max-width: 20%;
     top: 66.5vh;
     /*max-width: 25%;*/
     max-height: 44%;
@@ -80,6 +84,7 @@
     padding-right: 2vw;
     margin: 0 auto;
     height: 100vh;
+    max-width: 20%;
     top: 86.5vh;
     /*max-width: 25%;*/
     max-height: 44%;
