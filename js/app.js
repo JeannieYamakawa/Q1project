@@ -42,12 +42,13 @@ $( function() {
             } )
 
 
+
+
+
             $button.click( function( event ) {
                     $cuisineType = window.location.search.split( "=" )[ 1 ];
                     event.preventDefault()
                     var zipCodeToCheck = $userZipCode.val()
-
-                    // console.log( $cuisineType );
 
                     var checkedZip = isValidZip( zipCodeToCheck )
                     if ( checkedZip == true ) {
@@ -84,54 +85,67 @@ $( function() {
                                                 // console.log( myObject )
                                         } );
                                         domParsed.each( function( i ) {
-                                            var bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ]; //returns 10 business addresses from the same yelp page
-                                            // console.log( bizAddress );
-                                            if ( bizAddress == undefined ) {
-                                                alert( "Not enough trucks for your chosen cuisine type have listed their addresses. Please choose another type." )
-                                                window.location.href = '/Q1project/index.html'
-                                                return false
+                                                    var bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ]; //returns 10 business addresses from the same yelp page
+                                                    // console.log( bizAddress );
+                                                    if ( bizAddress == undefined ) {
+                                                        alert( "Not enough trucks for your chosen cuisine type have listed their addresses. Please choose another type." )
+                                                        window.location.href = '/Q1project/index.html'
+                                                        return false
 
-                                            } else {
-                                                bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ].innerText
-                                                bizAddress = bizAddress.replace( /↵/g, "" );
-                                                bizAddress = bizAddress.trim(); //remove special characters and whitespace
-                                                arrayOfBizInfo[ i ].address = bizAddress;
-                                                var photoLocation = $( this ).find( '.pb-90s img' ).attr( "src" )
-                                                var bizYelpPageHref = $( this ).find( '.indexed-biz-name a' )[ 0 ].pathname //returns the page link
-                                                var yelpAddress = "https://www.yelp.com" + bizYelpPageHref;
-                                                var truckName = "(dummy name)Truck " + ( i + 1 );
-                                                var hrefMinusBiz = bizYelpPageHref.substr( 5 );
-                                                // console.log( hrefMinusBiz );
-                                                var yelpMapAddress = "https://www.yelp.com/map/" + hrefMinusBiz;
-                                                arrayOfBizInfo[ i ].mapAddress = yelpMapAddress;
-                                                arrayOfBizInfo[ i ].yelpSite = yelpAddress;
-                                                arrayOfBizInfo[ i ].trucksName = truckName;
-                                                arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
-                                                arrayOfBizInfo[ i ].imgLocation = photoLocation;
-                                                console.log( arrayOfBizInfo )
-                                                window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
+                                                    } else {
+                                                        bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ].innerText
+                                                        bizAddress = bizAddress.replace( /↵/g, "" );
+                                                        bizAddress = bizAddress.trim(); //remove special characters and whitespace
+                                                        arrayOfBizInfo[ i ].address = bizAddress;
+                                                        var photoLocation = $( this ).find( '.pb-90s img' ).attr( "src" )
+                                                        var bizYelpPageHref = $( this ).find( '.indexed-biz-name a' )[ 0 ].pathname //returns the page link
+                                                        var yelpAddress = "https://www.yelp.com" + bizYelpPageHref;
+                                                        var truckName = "(dummy name)Truck " + ( i + 1 );
+                                                        var hrefMinusBiz = bizYelpPageHref.substr( 5 );
+                                                        // console.log( hrefMinusBiz );
+                                                        var yelpMapAddress = "https://www.yelp.com/map/" + hrefMinusBiz;
+                                                        arrayOfBizInfo[ i ].mapAddress = yelpMapAddress;
+                                                        arrayOfBizInfo[ i ].yelpSite = yelpAddress;
+                                                        arrayOfBizInfo[ i ].trucksName = truckName;
+                                                        arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
+                                                        arrayOfBizInfo[ i ].imgLocation = photoLocation;
+                                                        console.log( arrayOfBizInfo )
 
-                                                // window.location.href = '/Q1project/page3.html'
-                                                var $picture = $( "#truck" );
 
-                                                function moveRight() {
-                                                    $picture.animate( {
-                                                        left: "+=80%"
-                                                    }, 2100, "linear", changePage2 )
-                                                } //ends function moveRight
-                                                moveRight();
-                                            } //ends else for is biz address exists
-                                        } ).fail( function() {
-                                            console.log( "Search didn't work." );
-                                        } )
+                                                        window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
 
-                                    } ) //ends google ajax call
+                                                        // window.location.href = '/Q1project/page3.html'
+                                                        var $picture = $( "#truck" );
+
+                                                        function moveRight() {
+                                                            $picture.animate( {
+                                                                left: "+=80%"
+                                                            }, 2100, "linear", changePage2 )
+                                                        } //ends function moveRight
+                                                        moveRight();
+                                                    } //ends else for is biz address exists
+                                                )
+                                            } //ends the domParsed.each function
+
+                                    } ).fail( function() { //ends message.done function
+                                        console.log( "Search didn't work." );
+
+
+                                    } ) //ends google ajax call's .done function
                             } else { //checkedZip
                                 alert( "Please enter a valid zip code!" );
                             }
 
-
                         } ) //ends search button click function
+
+
+
+
+
+
+
+
+
                     JSON.parse( localStorage.fakeJSON ) var myArrayofInfo = []
                     for ( var i = 0; i < ( JSON.parse( localStorage.fakeJSON ).length ); i++ ) {
                         myArrayofInfo.push( ( JSON.parse( localStorage.fakeJSON ) )[ i ] );
