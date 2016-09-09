@@ -15,6 +15,7 @@
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
+    max-width: 20vw;
     border: none;
     font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
     color: WhiteSmoke;
