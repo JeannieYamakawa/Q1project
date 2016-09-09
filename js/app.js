@@ -113,7 +113,7 @@ $( function() {
                                     arrayOfBizInfo[ i ].trucksName = truckName;
                                     arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
                                     arrayOfBizInfo[ i ].imgLocation = photoLocation;
-                                    window.location.href = '/Q1project/page3.html'
+                                    // window.location.href = '/Q1project/page3.html'
                                 }
                             } );
 
