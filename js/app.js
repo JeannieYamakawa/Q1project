@@ -131,13 +131,6 @@ $( function() {
                             window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
 
 
-
-
-
-
-
-
-
                         } ).fail( function() {
                             console.log( "Search didn't work." );
                         } )
@@ -247,7 +240,9 @@ var radius = {
     }
 }
 
-
+function changePage2() {
+    window.location.href = '/Q1project/page3.html'
+}
 
 //images on page 3 need to be linked to yelp's main page for the business
 //calculate for 1, 2, and 5 miles the regular zip minus ____
