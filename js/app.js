@@ -69,7 +69,7 @@ $( function() {
 
                         var message = $.ajax( {
                             //https://www.yelp.com/search?find_desc=food+truck&find_loc=78752&start=0&cflt=mexican&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871
-                            url: 'https://crossorigin.me/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
+                            url: 'https://cors-anywhere.herokuapp.com/http://example.com/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
                                 zipCodeToCheck + '&start=0&cflt=' + $cuisineType + radius[ milesChosen ]( lat, long ),
                             //+ '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871'
                             type: 'GET',
