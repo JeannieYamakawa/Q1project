@@ -127,6 +127,7 @@ $( function() {
 
                         } ).fail( function() {
                             console.log( "Search didn't work." );
+                            alert("No trucks found. Please expand your search.")
                         } )
 
 
