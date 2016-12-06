@@ -4,14 +4,14 @@ $( function() {
         var $form = $( "#theForm" );
         var $cuisineType;
         var $userZipCode = $( "#inputText" );
-        console.log( $userZipCode )
+//         console.log( $userZipCode )
         var $userInput;
 
         var $within1Mile, $within2Miles, $within5Miles, $within10Miles;
         var $checkedZipCode;
         var $arrayOfCuisine;
         var $button = $( '.button' )
-        console.log( $button )
+//         console.log( $button )
         var $truck = $( '.truck' )
         var $pg3body = $( ".pg3body" )
 
@@ -29,7 +29,7 @@ $( function() {
                 event.preventDefault()
                 $cuisineType = event.target.title
                 $cuisineType = $cuisineType.toUpperCase();
-                console.log( $cuisineType ) //
+//                 console.log( $cuisineType ) //
                 window.location.href = '/Q1project/page2.html?type=' + $cuisineType;
                 return false;
             }
@@ -47,13 +47,13 @@ $( function() {
                 event.preventDefault()
                 var zipCodeToCheck = $userZipCode.val()
 
-                console.log( $cuisineType );
+//                 console.log( $cuisineType );
 
                 var checkedZip = isValidZip( zipCodeToCheck )
                 if ( checkedZip == true ) {
-                    console.log( checkedZip )
+//                     console.log( checkedZip )
                     var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
-                    console.log( milesChosen )
+//                     console.log( milesChosen )
 
 
 
@@ -65,7 +65,7 @@ $( function() {
                         long = $( data ).find( "location" ).find( "lng" ).first().text();
 
                         var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
-                        console.log( milesChosen )
+//                         console.log( milesChosen )
 
                         var message = $.ajax( {
                             //https://www.yelp.com/search?find_desc=food+truck&find_loc=78752&start=0&cflt=mexican&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871
@@ -86,11 +86,11 @@ $( function() {
                                 var myObject = {}
                                 myObject.name = bizName
                                 arrayOfBizInfo[ i ] = myObject
-                                console.log( myObject )
+//                                 console.log( myObject )
                             } );
                             domParsed.each( function( i ) {
                                 var bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ]; //returns 10 business addresses from the same yelp page
-                                console.log( bizAddress );
+//                                 console.log( bizAddress );
                                 if ( bizAddress == undefined ) {
                                     alert( "No truck be found in your area for your chosen cuisine type. Please choose another type." )
                                     window.location.href = '/Q1project/index.html'
@@ -106,7 +106,7 @@ $( function() {
                                     var yelpAddress = "https://www.yelp.com" + bizYelpPageHref;
                                     var truckName = "(dummy name)Truck " + ( i + 1 );
                                     var hrefMinusBiz = bizYelpPageHref.substr( 5 );
-                                    console.log( hrefMinusBiz );
+//                                     console.log( hrefMinusBiz );
                                     var yelpMapAddress = "https://www.yelp.com/map/" + hrefMinusBiz;
                                     arrayOfBizInfo[ i ].mapAddress = yelpMapAddress;
                                     arrayOfBizInfo[ i ].yelpSite = yelpAddress;
@@ -126,7 +126,7 @@ $( function() {
 
 
                         } ).fail( function() {
-                            console.log( "Search didn't work." );
+                            console.log( "Searched data could not be located." );
                             alert("No trucks found. Please expand your search.")
                         } )
 
@@ -146,7 +146,7 @@ $( function() {
         }
 
         var $pg3background = $( '#background-image2' );
-        console.log( myArrayofInfo );
+//         console.log( myArrayofInfo );
         for ( var j = 0; j < 5; j++ ) {
             var $newA = $( "<a>" );
             $newA.attr( "href", myArrayofInfo[ j ].yelpSite );
@@ -162,11 +162,11 @@ $( function() {
             $pg3background.after( $newA );
         }
 
-        console.log( myArrayofInfo )
+//         console.log( myArrayofInfo )
         for ( var k = 0; k < 5; k++ ) {
             var $newA = $( "<a>" );
             $newA.attr( "href", myArrayofInfo[ k ].mapAddress );
-            console.log( myArrayofInfo[ k ].mapAddress );
+//             console.log( myArrayofInfo[ k ].mapAddress );
             $newA.attr( "style", "cursor: pointer;" );
             $newA.attr( "target", "_blank" );
             var $newDivsClass2 = 'setToInline' + ( k + 1 );
@@ -176,7 +176,7 @@ $( function() {
             $pg3background.after( $newA );
         }
 
-        console.log( myArrayofInfo )
+//         console.log( myArrayofInfo )
         for ( var m = 0; m < 5; m++ ) {
 
             var $newImg = $( "<img>" );
@@ -226,11 +226,11 @@ var radius = {
         ne_latitude = ( lt - ( -0.09089659 ) );
         ne_longitude = ( lng - ( -0.09918571 ) );
 
-        console.log( 'THIS WORKS', lt, ",", lng, ",", sw_latitude, ',', sw_longitude, ',', ne_latitude, ',', ne_longitude );
+//         console.log( 'THIS WORKS', lt, ",", lng, ",", sw_latitude, ',', sw_longitude, ',', ne_latitude, ',', ne_longitude );
 
         var coords = [ sw_longitude, sw_latitude, ne_longitude, ne_latitude ].join( ',' );
-        console.log( '&l=g:' + coords );
-        console.log( '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871' );
+//         console.log( '&l=g:' + coords );
+//         console.log( '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871' );
         return '&l=g:' + coords;
     }
 }
