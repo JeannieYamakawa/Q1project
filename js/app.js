@@ -129,7 +129,7 @@ $( function() {
 
                                     } ).fail( function() { //ends message.done function
                                         console.log( "Search didn't work." );
-                                        alert( "No truck be found in your area for your chosen cuisine type. Please choose another type." )
+                                        alert( "No truck be found in your area for your chosen cuisine type. Please choose another type or expand your radius." )
 
                                     } ) //ends google ajax call's .done function
                             } else { //checkedZip
