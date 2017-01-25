@@ -205,4 +205,5 @@ $( function() {
             function changePage2() {
                 window.location.href = '/Q1project/page3.html'
             }
+})
 
