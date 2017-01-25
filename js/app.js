@@ -4,19 +4,21 @@ $( function() {
         var $form = $( "#theForm" );
         var $cuisineType;
         var $userZipCode = $( "#inputText" );
-        // console.log( $userZipCode )
+//         console.log( $userZipCode )
         var $userInput;
-        // var $within1Mile, $within2Miles, $within5Miles, $within10Miles;
+
+        var $within1Mile, $within2Miles, $within5Miles, $within10Miles;
         var $checkedZipCode;
-        // var $arrayOfCuisine;
+        var $arrayOfCuisine;
         var $button = $( '.button' )
-            // console.log( $button )
+//         console.log( $button )
         var $truck = $( '.truck' )
         var $pg3body = $( ".pg3body" )
 
 
-
-
+        function isValidZip( sZip ) {
+            return /^\d{5}(-\d{4})?$/.test( sZip );
+        }
         var arrayOfBizInfo = []
 
         $( $body ).click( function( event ) {
@@ -27,21 +29,10 @@ $( function() {
                 event.preventDefault()
                 $cuisineType = event.target.title
                 $cuisineType = $cuisineType.toUpperCase();
-                console.log( $cuisineType ) //
-                var $truck = $( "#headerPicture" )
-
-                // function moveTruckRight() {
-                //     $truck.animate( {
-                //         left: "+=80%"
-                //     }, 2000, "linear", changePage1( $cuisineType ) )
-                // }
-                // moveTruckRight()
-                window.location.href = 'file:///Users/admin/galvanize/Q1project/page2.html?type=' + $cuisineType;
+//                 console.log( $cuisineType ) //
+                window.location.href = '/Q1project/page2.html?type=' + $cuisineType;
                 return false;
             }
-
-
-
         } );
 
 
@@ -52,18 +43,18 @@ $( function() {
 
 
         $button.click( function( event ) {
-
                 $cuisineType = window.location.search.split( "=" )[ 1 ];
                 event.preventDefault()
                 var zipCodeToCheck = $userZipCode.val()
 
-                // console.log( $cuisineType );
+//                 console.log( $cuisineType );
 
                 var checkedZip = isValidZip( zipCodeToCheck )
                 if ( checkedZip == true ) {
-                    // console.log( checkedZip )
+//                     console.log( checkedZip )
                     var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
-                    // console.log( milesChosen )
+//                     console.log( milesChosen )
+
 
 
                     $.ajax( {
@@ -74,11 +65,11 @@ $( function() {
                         long = $( data ).find( "location" ).find( "lng" ).first().text();
 
                         var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
-                        // console.log( milesChosen )
+//                         console.log( milesChosen )
 
                         var message = $.ajax( {
                             //https://www.yelp.com/search?find_desc=food+truck&find_loc=78752&start=0&cflt=mexican&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871
-                            url: 'https://crossorigin.me/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
+                            url: 'https://cors-anywhere.herokuapp.com/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
                                 zipCodeToCheck + '&start=0&cflt=' + $cuisineType + radius[ milesChosen ]( lat, long ),
                             //+ '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871'
                             type: 'GET',
@@ -95,65 +86,67 @@ $( function() {
                                 var myObject = {}
                                 myObject.name = bizName
                                 arrayOfBizInfo[ i ] = myObject
-                                    // console.log( myObject )
+//                                 console.log( myObject )
                             } );
                             domParsed.each( function( i ) {
-                                if ( i < 5 ) {
-                                    var bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ]; //returns 10 business addresses from the same yelp page
-                                    // console.log( bizAddress );
-                                    if ( bizAddress == undefined ) {
-                                        alert( "Not enough trucks for your chosen cuisine type have published their locations. Please choose another type." )
-                                        window.location.href = 'file:///Users/admin/galvanize/Q1project/index.html'
-                                        return false
+                                var bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ]; //returns 10 business addresses from the same yelp page
+//                                 console.log( bizAddress );
+                                if ( bizAddress == undefined ) {
+                                    alert( "No truck be found in your area for your chosen cuisine type. Please choose another type." )
+                                    window.location.href = '/Q1project/index.html'
+                                    return false
 
-                                    } else {
-                                        bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ].innerText
-                                        bizAddress = bizAddress.replace( /↵/g, "" );
-                                        bizAddress = bizAddress.trim(); //remove special characters and whitespace
-                                        arrayOfBizInfo[ i ].address = bizAddress;
-                                        var photoLocation = $( this ).find( '.pb-90s img' ).attr( "src" )
-                                        var bizYelpPageHref = $( this ).find( '.indexed-biz-name a' )[ 0 ].pathname //returns the page link
-                                        var yelpAddress = "https://www.yelp.com" + bizYelpPageHref;
-                                        var truckName = "(dummy name)Truck " + ( i + 1 );
-                                        var hrefMinusBiz = bizYelpPageHref.substr( 5 );
-                                        // console.log( hrefMinusBiz );
-                                        var yelpMapAddress = "https://www.yelp.com/map/" + hrefMinusBiz;
-                                        arrayOfBizInfo[ i ].mapAddress = yelpMapAddress;
-                                        arrayOfBizInfo[ i ].yelpSite = yelpAddress;
-                                        arrayOfBizInfo[ i ].trucksName = truckName;
-                                        arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
-                                        arrayOfBizInfo[ i ].imgLocation = photoLocation;
-
-
-                                    }
-                                } //closes else
+                                } else {
+                                    bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ].innerText
+                                    bizAddress = bizAddress.replace( /↵/g, "" );
+                                    bizAddress = bizAddress.trim(); //remove special characters and whitespace
+                                    arrayOfBizInfo[ i ].address = bizAddress;
+                                    var photoLocation = $( this ).find( '.pb-90s img' ).attr( "src" )
+                                    var bizYelpPageHref = $( this ).find( '.indexed-biz-name a' )[ 0 ].pathname //returns the page link
+                                    var yelpAddress = "https://www.yelp.com" + bizYelpPageHref;
+                                    var truckName = "(dummy name)Truck " + ( i + 1 );
+                                    var hrefMinusBiz = bizYelpPageHref.substr( 5 );
+//                                     console.log( hrefMinusBiz );
+                                    var yelpMapAddress = "https://www.yelp.com/map/" + hrefMinusBiz;
+                                    arrayOfBizInfo[ i ].mapAddress = yelpMapAddress;
+                                    arrayOfBizInfo[ i ].yelpSite = yelpAddress;
+                                    arrayOfBizInfo[ i ].trucksName = truckName;
+                                    arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
+                                    arrayOfBizInfo[ i ].imgLocation = photoLocation;
+                                    window.location.href = '/Q1project/page3.html'
+                                }
                             } );
-                            var $picture = $( "#truck" );
 
-                            function moveRight() {
-                                $picture.animate( {
-                                    left: "+=80%"
-                                }, 2100, "linear", changePage2 )
-                            }
-                            moveRight();
                             window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
 
+
+
+
+
+
+
                         } ).fail( function() {
-                            console.log( "Search didn't work." );
+                            console.log( "Searched data could not be located." );
+                            alert("No trucks found. Please expand your search.")
                         } )
+
+
                     } )
 
                 } else {
                     alert( "Please enter a valid zip code!" );
                 }
+
+
             } ) //ends search button click function
-        JSON.parse( localStorage.fakeJSON );
+        JSON.parse( localStorage.fakeJSON )
         var myArrayofInfo = []
         for ( var i = 0; i < ( JSON.parse( localStorage.fakeJSON ).length ); i++ ) {
             myArrayofInfo.push( ( JSON.parse( localStorage.fakeJSON ) )[ i ] );
         }
+
         var $pg3background = $( '#background-image2' );
-        // console.log( myArrayofInfo );
+//         console.log( myArrayofInfo );
         for ( var j = 0; j < 5; j++ ) {
             var $newA = $( "<a>" );
             $newA.attr( "href", myArrayofInfo[ j ].yelpSite );
@@ -165,23 +158,27 @@ $( function() {
             var $newDivsClass = 'table-row' + ( j + 1 );
             var $newDivsPrevious = 'table-row' + ( j + 2 );
             $newDiv.attr( 'class', $newDivsClass );
+
             $pg3background.after( $newA );
         }
-        // console.log( myArrayofInfo )
+
+//         console.log( myArrayofInfo )
         for ( var k = 0; k < 5; k++ ) {
             var $newA = $( "<a>" );
             $newA.attr( "href", myArrayofInfo[ k ].mapAddress );
-            // console.log( myArrayofInfo[ k ].mapAddress );
+//             console.log( myArrayofInfo[ k ].mapAddress );
             $newA.attr( "style", "cursor: pointer;" );
             $newA.attr( "target", "_blank" );
             var $newDivsClass2 = 'setToInline' + ( k + 1 );
             $newA.attr( 'class', $newDivsClass2 );
             $newA.text( "map & directions" );
+
             $pg3background.after( $newA );
         }
 
-        // console.log( myArrayofInfo )
+//         console.log( myArrayofInfo )
         for ( var m = 0; m < 5; m++ ) {
+
             var $newImg = $( "<img>" );
             var imageAddress = "http:" + myArrayofInfo[ m ].imgLocation;
             $newImg.attr( "src", imageAddress );
@@ -192,7 +189,11 @@ $( function() {
             $newImg.attr( 'onclick', clickImage );
             $pg3background.after( $newImg );
         }
+
+
     } ) //ends auto-invoked function
+
+
 var radius = {
     1: function( lt, lng ) {
         var sw_latitude, sw_longitude, ne_latitude, ne_longitude;
@@ -225,47 +226,18 @@ var radius = {
         ne_latitude = ( lt - ( -0.09089659 ) );
         ne_longitude = ( lng - ( -0.09918571 ) );
 
-        // console.log( 'THIS WORKS', lt, ",", lng, ",", sw_latitude, ',', sw_longitude, ',', ne_latitude, ',', ne_longitude );
+//         console.log( 'THIS WORKS', lt, ",", lng, ",", sw_latitude, ',', sw_longitude, ',', ne_latitude, ',', ne_longitude );
 
         var coords = [ sw_longitude, sw_latitude, ne_longitude, ne_latitude ].join( ',' );
-        // console.log( '&l=g:' + coords );
-        // console.log( '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871' );
+//         console.log( '&l=g:' + coords );
+//         console.log( '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871' );
         return '&l=g:' + coords;
     }
 }
 
-function isValidZip( sZip ) {
-    return /^\d{5}(-\d{4})?$/.test( sZip );
-}
-
-var changePage1 = function( cuisineType ) {
-
-    window.location.href = 'file:///Users/admin/galvanize/Q1project/page2.html?type=' + cuisineType;
-    return
-}
-var changePage2 = function() {
-    window.location.href = 'file:///Users/admin/galvanize/Q1project/page3.html';
-}
 
 
-//
-// function runBackToStart() {
-//     $picture.animate( {
-//         left: "-=80%"
-//     }, "slow", "linear", flipBackwards )
-// }
-//
-// function flip() {
-//     $picture.css(
-//         "transform", "scaleX(-1)" )
-// }
-//
-// function flipBackwards() {
-//     $picture.css(
-//         "transform", "scaleX(1)" )
-// }
-//
-// function backAndForth() {
-//     runRight();
-//     runBackToStart();
-// }
+//images on page 3 need to be linked to yelp's main page for the business
+//calculate for 1, 2, and 5 miles the regular zip minus ____
+// __
+// _
