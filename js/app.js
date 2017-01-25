@@ -4,74 +4,52 @@ $( function() {
             var $form = $( "#theForm" );
             var $cuisineType;
             var $userZipCode = $( "#inputText" );
-            // console.log( $userZipCode )
             var $userInput;
-
             var $within1Mile, $within2Miles, $within5Miles, $within10Miles;
             var $checkedZipCode;
             var $arrayOfCuisine;
             var $button = $( '.button' )
-                // console.log( $button )
             var $truck = $( '.truck' )
             var $pg3body = $( ".pg3body" )
-
 
             function isValidZip( sZip ) {
                 return /^\d{5}(-\d{4})?$/.test( sZip );
             }
             var arrayOfBizInfo = []
-
             $( $body ).click( function( event ) {
-
                 if ( event.target.title == "header" ) {
                     alert( "Please choose a cuisine!" )
                 } else {
                     event.preventDefault()
                     $cuisineType = event.target.title
                     $cuisineType = $cuisineType.toUpperCase();
-                    // console.log( $cuisineType ) //
                     window.location.href = '/Q1project/page2.html?type=' + $cuisineType;
                     return false;
                 }
             } );
 
-
-
             $userZipCode.click( function( event ) {
                 event.preventDefault()
             } )
-
-
-
-
-
             $button.click( function( event ) {
                     $cuisineType = window.location.search.split( "=" )[ 1 ];
-                    event.preventDefault()
-                    var zipCodeToCheck = $userZipCode.val()
-
-                    var checkedZip = isValidZip( zipCodeToCheck )
+                    event.preventDefault();
+                    var zipCodeToCheck = $userZipCode.val();
+                    var checkedZip = isValidZip( zipCodeToCheck );
                     if ( checkedZip == true ) {
                         var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
                         $.ajax( {
                             url: "https://maps.googleapis.com/maps/api/geocode/xml?address=" + zipCodeToCheck
                         } ).done( function( data ) {
-
                                 lat = $( data ).find( "location" ).find( "lat" ).first().text();
                                 long = $( data ).find( "location" ).find( "lng" ).first().text();
-
                                 var milesChosen = $( 'input[name="radioCircle"]:checked' ).val();
-                                // console.log( milesChosen )
-
                                 var message = $.ajax( {
-                                    //https://www.yelp.com/search?find_desc=food+truck&find_loc=78752&start=0&cflt=mexican&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871
                                     url: 'https://crossorigin.me/https://yelp.com/search?find_desc=food%20truck&find_loc=' +
                                         zipCodeToCheck + '&start=0&cflt=' + $cuisineType + radius[ milesChosen ]( lat, long ),
-                                    //+ '&l=g:-97.8105926514,30.2448319153,-97.60597229,30.4226245871'
                                     type: 'GET',
                                     dataType: "html"
                                 } );
-
                                 message.done( function( data ) {
                                         var parsed = $.parseHTML( data )
                                         var domParsed = $( parsed ).find( "li.regular-search-result" ) //returns an array of dom nodes
@@ -91,7 +69,6 @@ $( function() {
                                                         alert( "Not enough trucks for your chosen cuisine type have listed their addresses. Please choose another type." )
                                                         window.location.href = '/Q1project/index.html'
                                                         return false
-
                                                     } else {
                                                         bizAddress = $( this ).find( '.secondary-attributes address' )[ 0 ].innerText
                                                         bizAddress = bizAddress.replace( /↵/g, "" );
@@ -110,13 +87,9 @@ $( function() {
                                                         arrayOfBizInfo[ i ].className = "table-row" + ( i + 1 );
                                                         arrayOfBizInfo[ i ].imgLocation = photoLocation;
 //                                                         console.log( arrayOfBizInfo )
-
-
                                                         window.localStorage.setItem( 'fakeJSON', JSON.stringify( arrayOfBizInfo ) );
-
                                                         // window.location.href = '/Q1project/page3.html'
                                                         var $picture = $( "#truck" );
-
                                                         function moveRight() {
                                                             $picture.animate( {
                                                                 left: "+=80%"
@@ -124,33 +97,20 @@ $( function() {
                                                         } //ends function moveRight
                                                         moveRight();
                                                     } //ends else for is biz address exists
-                                                )
-                                            } //ends the domParsed.each function
-
-                                    } ).fail( function() { //ends message.done function
-                                        console.log( "Search didn't work." );
-                                        alert( "No truck be found in your area for your chosen cuisine type. Please choose another type or expand your radius." )
-
-                                    } ) //ends google ajax call's .done function
+                                            } )//ends the domParsed.each function
+                                        } ).fail( function() { //ends message.done function
+                                            console.log( "Search didn't work." );
+                                            alert( "No truck be found in your area for your chosen cuisine type. Please choose another type or expand your radius." )
+                                        } ) //ends google ajax call's .done function
+                                    })
                             } else { //checkedZip
                                 alert( "Please enter a valid zip code!" );
                             }
-
-                        } ) //ends search button click function
-
-
-
-
-
-
-
-
-
+                 }) //ends search button click function
                     JSON.parse( localStorage.fakeJSON ) var myArrayofInfo = []
                     for ( var i = 0; i < ( JSON.parse( localStorage.fakeJSON ).length ); i++ ) {
                         myArrayofInfo.push( ( JSON.parse( localStorage.fakeJSON ) )[ i ] );
                     }
-
                     var $pg3background = $( '#background-image2' );
                     // console.log( myArrayofInfo );
                     for ( var j = 0; j < 5; j++ ) {
@@ -181,10 +141,8 @@ $( function() {
 
                         $pg3background.after( $newA );
                     }
-
                     // console.log( myArrayofInfo )
                     for ( var m = 0; m < 5; m++ ) {
-
                         var $newImg = $( "<img>" );
                         var imageAddress = "https:" + myArrayofInfo[ m ].imgLocation;
                         $newImg.attr( "src", imageAddress );
@@ -195,10 +153,10 @@ $( function() {
                         $newImg.attr( 'onclick', clickImage );
                         $pg3background.after( $newImg );
                     }
-
-
                 } ) //ends auto-invoked function
 
+
+//helper function:
 
             var radius = {
                 1: function( lt, lng ) {
