@@ -107,7 +107,8 @@ $( function() {
                                 alert( "Please enter a valid zip code!" );
                             }
                  }) //ends search button click function
-                    JSON.parse( localStorage.fakeJSON ) var myArrayofInfo = []
+                    JSON.parse( localStorage.fakeJSON );
+                        var myArrayofInfo = [];
                     for ( var i = 0; i < ( JSON.parse( localStorage.fakeJSON ).length ); i++ ) {
                         myArrayofInfo.push( ( JSON.parse( localStorage.fakeJSON ) )[ i ] );
                     }
