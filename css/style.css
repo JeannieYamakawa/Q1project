@@ -5,7 +5,7 @@
 #header {
     height: 20vh;
     background-color: rgb(255, 205, 115);
-    color: rgb(45, 113, 126);
+    color: rgb(63, 146, 162);
     font-size: 80%;
 }
 .header-h1 {
@@ -14,35 +14,35 @@
 }
 #type1 {
     height: 40vh;
-    background-color: DarkCyan;
+    background-color: rgb(63, 146, 162);
 }
 #type2 {
     height: 40vh;
-    background-color: DarkBlue;
+    background-color: rgb(29, 59, 81);
 }
 #type3 {
     height: 40vh;
-    background-color: DarkMagenta;
+    background-color: rgb(63, 146, 162);
 }
 #type4 {
     height: 40vh;
-    background-color: DarkGreen;
+    background-color: rgb(29, 59, 81);
 }
 #type5 {
     height: 40vh;
-    background-color: DarkSlateBlue;
+    background-color: rgb(29, 59, 81);
 }
 #type6 {
     height: 40vh;
-    background-color: LightCoral;
+    background-color: rgb(63, 146, 162);
 }
 #type7 {
     height: 40vh;
-    background-color: OliveDrab;
+    background-color: rgb(29, 59, 81);
 }
 #type8 {
     height: 40vh;
-    background-color: RebeccaPurple;
+    background-color: rgb(63, 146, 162);
 }
 #type1-label {
     font-size: 3vw;
